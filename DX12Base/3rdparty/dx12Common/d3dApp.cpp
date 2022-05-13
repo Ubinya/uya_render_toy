@@ -38,6 +38,9 @@ D3DApp::~D3DApp()
 {
 	if(md3dDevice != nullptr)
 		FlushCommandQueue();
+	ImGui_ImplDX12_Shutdown();
+	ImGui_ImplWin32_Shutdown();
+	ImGui::DestroyContext();
 }
 
 HINSTANCE D3DApp::AppInst()const

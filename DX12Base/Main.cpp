@@ -22,21 +22,22 @@
 #include "imgui/imgui_impl_win32.h"
 #include "imgui/imgui_impl_dx12.h"
 
+#include "render/include/render/light.h"
+#include "render/include/render/renderbuffer.h"
+#include "render/include/render/render.h"
+
 using namespace std;
 using namespace DirectX;
 using namespace DirectX::PackedVector;
 using Microsoft::WRL::ComPtr;
 using namespace ImGui;
 
-//***************************************************************************************
-// BoxApp.cpp by Frank Luna (C) 2015 All Rights Reserved.
-//
-// Shows how to draw a box in Direct3D 12.
-//
-// Controls:
-//   Hold the left mouse button down and move the mouse to rotate.
-//   Hold the right mouse button down and move the mouse to zoom in and out.
-//***************************************************************************************
+namespace uyatoy {
+    const FrameBuffer* getFrameBuffer(ThreeFrameBuffers* t, const Renderer*)
+    {
+        return (t->consumingBufferShift());
+    }
+}
 
 
 struct Vertex
