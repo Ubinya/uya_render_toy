@@ -1,9 +1,9 @@
 
 #include "dataloader.h"
-#include "Common/GameTimer.h"
-#include "Common/d3dApp.h"
-#include "Common/MathHelper.h"
-#include "Common/UploadBuffer.h"
+#include "3rdparty/dx12Common/GameTimer.h"
+#include "3rdparty/dx12Common/d3dApp.h"
+#include "3rdparty/dx12Common/MathHelper.h"
+#include "3rdparty/dx12Common/UploadBuffer.h"
 
 using namespace std;
 using namespace DirectX::PackedVector;
@@ -39,7 +39,6 @@ namespace DirectX {
 		uint32_t rgbaChanelNums;
 	};
 
-	
 
 	HRESULT CreateBMPTextureFromfile(
 		_In_ ID3D12Device* device,
