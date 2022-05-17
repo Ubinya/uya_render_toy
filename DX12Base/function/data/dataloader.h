@@ -4,7 +4,7 @@ using namespace DirectX;
 
 namespace uyatoy {
 
-	struct Vertex1 {
+	struct Vertex {
 		XMFLOAT3 Pos;
 		XMFLOAT4 Color;
 	};
@@ -32,6 +32,21 @@ namespace uyatoy {
 			D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0},
 		{"TEXCOORD", 1, DXGI_FORMAT_R32G32_FLOAT, 0, 32,
 			D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0}
+	};
+
+	class DataLoader {
+	public:
+		DataLoader(Microsoft::WRL::ComPtr<ID3D12Device> d3dDevice,
+			Microsoft::WRL::ComPtr<ID3D12GraphicsCommandList> CommandList);
+		~DataLoader();
+
+		std::unique_ptr<MeshGeometry> BuildSphereGeometry(XMFLOAT3 center, float rad);
+		std::unique_ptr<MeshGeometry> BuildBoxGeometry();
+	private:
+		std::unique_ptr<MeshGeometry> mBoxGeo = nullptr;
+		Microsoft::WRL::ComPtr<ID3D12Device> md3dDevice = nullptr;
+		Microsoft::WRL::ComPtr<ID3D12GraphicsCommandList> mCommandList = nullptr;
+
 	};
 
 }
